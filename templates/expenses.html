@@ -30,7 +30,7 @@
 </div>
 
 <h2>Add an expense</h2>
-<form action="/view_expenses" method="post">
+<form action="/view_expenses" method="post" id="expenseForm" onclick="return validateExpenseDate()">
     <input type="text" name="expense_date" placeholder="Expense date YYYY-MM-DD" required>
     <input type="text" name="expense_amount" placeholder="Expense amount" required>
     <label for="category">Select a category:</label>
@@ -43,4 +43,5 @@
 
 
  <a href="/">Back to home</a>
+ <script src="{{url_for('static', filename='js/validate.js')}}"></script>
  {% endblock %}
