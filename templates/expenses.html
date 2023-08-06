@@ -22,7 +22,7 @@
                 <td>{{ expense[2] }}</td>
                 <td>{{ expense[3] }}</td>
                 <td>
-                    <a href="/delete_expense/{{category[0]}}">Delete</a>
+                    <a href="/delete_expense/{{expense[0]}}">Delete</a>
                 </td>
             </tr>
         {% endfor %}
@@ -30,11 +30,16 @@
 </div>
 
 <h2>Add an expense</h2>
-<form action="/add_category" method="post">
-    <input type="text" name="date" placeholder="Expense date" required>
-    <input type="text" name="expense category" placeholder="Expense category" required>
-    <input type="text" name="expense category" placeholder="Expense amount" required>
-    <input type="submit" value="Add category">
+<form action="/view_expenses" method="post">
+    <input type="text" name="expense_date" placeholder="Expense date YYYY-MM-DD" required>
+    <input type="text" name="expense_amount" placeholder="Expense amount" required>
+    <label for="category">Select a category:</label>
+    <select name="category" id="category">
+        {% for category in categories %}
+        <option value="{{ category[0] }}"> {{ category[0] }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Add expense">
 
 
  <a href="/">Back to home</a>
