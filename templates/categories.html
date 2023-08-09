@@ -6,6 +6,16 @@
 
 {% block body %}
 
+<h2>Add category</h2>
+<form action="/add_category" method="post">
+    <input type="text" name="name" placeholder="Category name" required>
+    <input type="submit" value="Add category">
+
+</form>
+
+
+<a href="/">Back to home</a>
+
 <div class="categories">
     <h1>Categories</h1>
 
@@ -26,14 +36,6 @@
 </div>
 
 
-<h2>Add category</h2>
-<form action="/add_category" method="post">
-    <input type="text" name="name" placeholder="Category name" required>
-    <input type="submit" value="Add category">
 
-</form>
-
-
-<a href="/">Back to home</a>
 
 {% endblock %}

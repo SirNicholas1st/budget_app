@@ -1,13 +1,28 @@
  {% extends 'base.html' %}
 
  {% block head %}
-<h1>Add expenses</h1>
+
  {% endblock %}
 
  {% block body %}
 
  <div class="categories">
     <h1>Expenses</h1>
+
+    <h2>Add an expense</h2>
+        <form action="/view_expenses" method="post" id="expenseForm" onsubmit="return validateExpenseDate()">
+            <input type="text" name="expense_date" placeholder="Expense date YYYY-MM-DD" required>
+            <input type="text" name="expense_amount" placeholder="Expense amount" required>
+            <label for="category">Select a category:</label>
+            <select name="category" id="category">
+                {% for category in categories %}
+                <option value="{{ category[0] }}"> {{ category[0] }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add expense">
+
+
+        <a href="/">Back to home</a>
 
     <table>
         <tr>
@@ -29,19 +44,6 @@
     </table>
 </div>
 
-<h2>Add an expense</h2>
-<form action="/view_expenses" method="post" id="expenseForm" onclick="return validateExpenseDate()">
-    <input type="text" name="expense_date" placeholder="Expense date YYYY-MM-DD" required>
-    <input type="text" name="expense_amount" placeholder="Expense amount" required>
-    <label for="category">Select a category:</label>
-    <select name="category" id="category">
-        {% for category in categories %}
-        <option value="{{ category[0] }}"> {{ category[0] }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Add expense">
 
-
- <a href="/">Back to home</a>
- <script src="{{url_for('static', filename='js/validate.js')}}"></script>
+ 
  {% endblock %}
