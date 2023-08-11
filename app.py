@@ -5,6 +5,7 @@ from datetime import datetime
 FLASK_DB = "flask_mysql_db"
 CATEGORY_TABLE = "categories"
 EXPENSE_TABLE = "expenses"
+CURRENT_YEAR = datetime.today().year
 
 app = Flask(__name__)
 app.config["MYSQL_HOST"] = "localhost"
@@ -16,8 +17,17 @@ db = MySQL(app)
 
 @app.route("/")
 def index():
+    cur = db.connection.cursor()
 
-    return render_template("index.html")
+    total_expenses_per_month_sql = f"SELECT MONTHNAME(expenseDate) as month, SUM(amount) \
+                                    FROM {EXPENSE_TABLE} \
+                                    WHERE YEAR(expenseDate) = {CURRENT_YEAR} \
+                                    GROUP BY MONTH(expenseDate)"
+    cur.execute(total_expenses_per_month_sql)
+    total_expenses_per_month = cur.fetchall()
+    cur.close()
+    print(total_expenses_per_month)
+    return render_template("index.html", total_expenses_per_month = total_expenses_per_month)
 
 @app.route("/view_categories", methods = ["GET"])
 def view_categories():

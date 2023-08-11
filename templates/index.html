@@ -8,4 +8,19 @@
 {% block body %}
 <a href="/view_expenses"> Add expenses</a>
 <a href="/view_categories"> View categories</a>
+
+<table>
+    <th>Month</th>
+    <th>Total expenses</th>
+    {% for expense in total_expenses_per_month %}
+        <tr>
+            <td>{{ expense[0] }}</td>
+            <td>{{ expense[1] }}</td>
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+
 {% endblock %}
