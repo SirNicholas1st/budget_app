@@ -1,4 +1,76 @@
-body {
+/* Reset some default styles */
+body, html, h1, h2, p {
     margin: 0;
-    font-family: Arial;
+    padding: 0;
 }
+
+/* Set background and text colors for dark mode */
+body {
+    background-color: #111111;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+h1, h2 {
+    color: #00cc00;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Link styles */
+a {
+    color: #00cc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Container styles */
+.categories {
+    padding: 20px;
+}
+
+/* Form styles */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #222222;
+    color: #ffffff;
+}
+
+input[type="submit"] {
+    background-color: #00cc00;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #333333;
+}
+
+/* Highlight the first row */
+tr:first-child {
+    background-color: #333333;
+}
+
+/* Actions column styles */
+td:last-child {
+    text-align: center;
+}
+
